@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="main.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="padding-top:10%">
+        <div class="input-field col s3 offset-s5" >
+          <input placeholder="ex. 80209" id="zip_code" type="text" class="validate">
+          <label id="zipLabel" for="zip_code">ZIP CODE</label>
+          <a class="waves-effect waves-light btn">Weather</a>
+        </div>
+      </div>
+      <div class="card scale-transition" style="margin-top:5em" display: hidden>
+        <div class="card-tabs">
+          <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a href="#test4" class="active">Temperature</a></li>
+            <li class="tab"><a href="#test5">Forecast</a></li>
+          </ul>
+        </div>
+        <div class="card-content grey lighten-4">
+          <div id="test4" style="padding-left:8em"></div>
+          <div id="test5"></div>
+        </div>
+      </div>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="app.js"></script>
+  </body>
+</html>
