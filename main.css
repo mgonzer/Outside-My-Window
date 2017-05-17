@@ -1,21 +1,20 @@
-body {
-  background-image: url('beach.jpg');
 
-  background-repeat: no-repeat;
-  background-size: cover;
+::-webkit-input-placeholder {
+  color: black;
 }
 
-#zipLabel {
-  color: white;
-  font-size: 2em;
-  font-weight: bold;
+.input-field {
+   width: 20em;
+   float: right;
 }
 
-#test4 {
-  font-weight: bold;
-  font-size: 1.5em;
+img{
+  height: 100vh;
+  width: 100vw;
 }
 
-/*.scale-transition{
-transition: transform 0.8s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;
-}*/
+#radar {
+  height:40vh;
+  width:90vw;
+  /*object-fit: scale-down;*/
+}

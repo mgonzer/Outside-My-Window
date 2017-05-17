@@ -1,36 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-    <link rel="stylesheet" href="main.css">
-    <title></title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row" style="padding-top:10%">
-        <div class="input-field col s3 offset-s5" >
-          <input placeholder="ex. 80209" id="zip_code" type="text" class="validate">
-          <label id="zipLabel" for="zip_code">ZIP CODE</label>
-          <a class="waves-effect waves-light btn">Weather</a>
+
+<head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <link rel="stylesheet" href="main.css">
+  <title></title>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-wrapper light-blue lighten-4">
+      <a href="#" class="brand-logo" style="padding-left:4em; color: #01579b; font-size:3em">Outside My Window</a>
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" placeholder="Enter Zip Code" required>
+          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          <a class="waves-effect waves-light btn" href="#modal2" style="display: none">ZIP</a>
         </div>
-      </div>
-      <div class="card scale-transition" style="margin-top:5em" display: hidden>
-        <div class="card-tabs">
-          <ul class="tabs tabs-fixed-width">
-            <li class="tab"><a href="#test4" class="active">Temperature</a></li>
-            <li class="tab"><a href="#test5">Forecast</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-4">
-          <div id="test4" style="padding-left:8em"></div>
-          <div id="test5"></div>
+      </form>
+    </div>
+    <div id="modal2" class="modal" style="height:15em">
+      <div class="modal-content">
+        <h3 style="color:black">ENTER YOUR ZIP CODE</h3>
+        <p style="color:black; line-height:1.2em">Please start by entering your zip code in the upper right corner to get a peak outside and some other cool weather features.</p>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">DISMISS</a>
         </div>
       </div>
     </div>
+  </nav>
+
+  <div class="parallax-container">
+    <div class="parallax"><img class="img1" src="beach.jpg"></div>
+  </div>
+  <div class="card row section">
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a href="#test4" style="color: #01579b; font-size:1.5em" class="active">Temperature</a></li>
+        <li class="tab"><a href="#test5" style="color: #01579b; font-size:1.5em">Forecast</a></li>
+        <li class="tab"><a href="#test6" style="color: #01579b; font-size:1.5em">Precipitation</a></li>
+        <li class="tab"><a href="#test7" style="color: #01579b; font-size:1.5em">AVG/RECORDS</a></li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4 center-align">
+      <div id="test4">TEMPERATURE</div>
+      <div id="test5">FORECAST</div>
+      <div id="test6">PRECIPITATION</div>
+      <div id="test7">AVERAGE/RECORDS</div>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img class="img2" src="mountains.jpg"></div>
+  </div>
+  <div class="section white">
+    <div class="row">
+      <div class="col s10 offset-s1">
+        <div class="card medium">
+          <div class="card-image">
+            <img id="radar" class="center-align" src="radar.gif">
+          </div>
+          <div class="card-content center-align">
+            <a class="waves-effect waves-light btn " href="#modal1">WEATHER ALERTS</a>
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4>WEATHER ALERTS</h4>
+                <p id="alerts" class="center-align">No weather alerts for your area</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Dismiss</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="parallax-container">
+    <div class="parallax"><img class="img3" src="desert.jpg"></div>
+  </div>
+  
+  <footer class="page-footer light-blue lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="light-blue-text text-darken-4">Outside My Window</h5>
+          <p class="light-blue-text text-darken-4">Get your ass outside</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container black-text">
+        © 2017 Copyright Matt
+      </div>
+    </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
   <script src="app.js"></script>
-  </body>
+</body>
+
 </html>
