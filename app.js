@@ -8,8 +8,11 @@ const RADAR_URL = "http://api.wunderground.com/api/5ee6bff184de1362/animatedrada
 const RADAR_URL2 = ".gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50"
 const ALERT_URL = "http://api.wunderground.com/api/5ee6bff184de1362/alerts/q/"
 const JOKES_URL = "http://api.icndb.com/jokes/random/"
-var zipCode;
+var zipCode = null;
+var latitude;
+var longitude;
 
+$(sendWeatherInfoAuto);
 $(clickButton);
 
 $('.parallax').parallax();
@@ -20,6 +23,26 @@ $('#modal2').modal('open');
 
 function clickButton(){
   $('form').submit(getWeather)
+}
+
+navigator.geolocation.getCurrentPosition(function(position) {
+  latitude = position.coords.latitude
+  longitude = position.coords.longitude
+  console.log(latitude, longitude);
+});
+
+function sendWeatherInfoAuto(){
+  window.setTimeout(getWeatherWithLatLon, 10000)
+}
+
+function getWeatherWithLatLon(){
+    getImage();
+    getTemp();
+    getRain();
+    getForecast();
+    getAverage();
+    getRadar();
+    getAlert();
 }
 
 function getWeather(){
@@ -35,37 +58,71 @@ function getWeather(){
 }
 
 function getTemp(){
-  $.get(PROXY_URL+CONDITIONS_URL+zipCode+".json")
-    .then(showWeather);
+  if(zipCode==null){
+    $.get(PROXY_URL+CONDITIONS_URL+latitude+","+longitude+".json")
+      .then(showWeather);
+  }else{
+    $.get(PROXY_URL+CONDITIONS_URL+zipCode+".json")
+      .then(showWeather);
+  }
 }
 
 function getImage(){
-  $.get(PROXY_URL+IMAGES_URL+zipCode+".json")
-    .then(showImage)
+  if(zipCode==null){
+    $.get(PROXY_URL+IMAGES_URL+latitude+","+longitude+".json")
+      .then(showImage)
+  }else{
+    $.get(PROXY_URL+IMAGES_URL+zipCode+".json")
+      .then(showImage)
+  }
 }
 
 function getForecast(){
-  $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
-    .then(showForecast)
+  if(zipCode==null){
+    $.get(PROXY_URL+FORECAST_URL+latitude+","+longitude+".json")
+      .then(showForecast)
+  }else{
+    $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
+      .then(showForecast)
+  }
 }
 
 function getRain(){
-  $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
-    .then(showPrecipitation)
+  if(zipCode==null){
+    $.get(PROXY_URL+FORECAST_URL+latitude+","+longitude+".json")
+      .then(showPrecipitation)
+  }else{
+    $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
+      .then(showPrecipitation)
+  }
 }
 
 function getAverage(){
-  $.get(PROXY_URL+ALMANAC_URL+zipCode+".json")
-    .then(showAverage)
+  if(zipCode==null){
+    $.get(PROXY_URL+ALMANAC_URL+latitude+","+longitude+".json")
+      .then(showAverage)
+  }else{
+    $.get(PROXY_URL+ALMANAC_URL+zipCode+".json")
+      .then(showAverage)
+  }
 }
 
 function getRadar(){
-  $("#radar").attr("src", RADAR_URL+zipCode+RADAR_URL2)
+  if(zipCode==null){
+    $("#radar").attr("src", RADAR_URL+latitude+","+longitude+RADAR_URL2)
+  }else{
+    $("#radar").attr("src", RADAR_URL+zipCode+RADAR_URL2)
+  }
 }
 
 function getAlert(){
-  $.get(PROXY_URL+ALERT_URL+zipCode+".json")
-    .then(showAlert)
+  if(zipCode==null){
+    $.get(PROXY_URL+ALERT_URL+latitude+","+longitude+".json")
+      .then(showAlert)
+  }else{
+    $.get(PROXY_URL+ALERT_URL+zipCode+".json")
+      .then(showAlert)
+  }
 }
 
 
@@ -103,7 +160,7 @@ function showAverage(temps){
   let avgLow = temps.almanac.temp_low.normal.F;
   let recordHigh = temps.almanac.temp_high.record.F;
   let recordLow = temps.almanac.temp_low.record.F;
-  $('#test7').text(`Average: ${avgHigh} <--> ${avgLow}
+  $('#test7').html(`Average: ${avgHigh} <--> ${avgLow} <br>
         Record: ${recordHigh} <--> ${recordLow}`);
 }
 
