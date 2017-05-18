@@ -1,12 +1,21 @@
+h3 h4{
+  font-family:'Open Sans', sans-serif;
+}
+
+p{
+  font-family: 'PT Serif', serif;
+  font-size: 1em;
+}
 
 ::-webkit-input-placeholder {
   color: black;
 }
 
 .input-field {
-   width: 20em;
+   width: 25em;
    float: right;
 }
+
 
 img{
   height: 100vh;
@@ -14,7 +23,29 @@ img{
 }
 
 #radar {
-  height:40vh;
-  width:90vw;
-  /*object-fit: scale-down;*/
+  height:100%;
+  width:100%;
+}
+
+#alertSection{
+  background: radial-gradient(circle, rgba(1, 87, 155,1), rgba(179,229,252,0));
+}
+
+.tabs .indicator{
+  background-color: #0d47a1;
+}
+
+@media only screen and (max-width: 992px) {
+  nav .brand-logo {
+    left: 10%;
+    -webkit-transform: translateX(-10%);
+            transform: translateX(-10%);
+}
+  .btn-large #search  {
+    left: 90%;
+    transform: translateX(90%);
+  }
+  .input-field{
+    width:15em;
+  }
 }

@@ -12,8 +12,9 @@ var zipCode = null;
 var latitude;
 var longitude;
 
-$(sendWeatherInfoAuto);
+// $(sendWeatherInfoAuto);
 $(clickButton);
+$(clickLocationButton);
 
 $('.parallax').parallax();
 
@@ -28,12 +29,15 @@ function clickButton(){
 navigator.geolocation.getCurrentPosition(function(position) {
   latitude = position.coords.latitude
   longitude = position.coords.longitude
-  console.log(latitude, longitude);
 });
 
-function sendWeatherInfoAuto(){
-  window.setTimeout(getWeatherWithLatLon, 10000)
+function clickLocationButton(){
+  $("#locationBtn").click(getWeatherWithLatLon)
 }
+
+// function sendWeatherInfoAuto(){
+//   window.setTimeout(getWeatherWithLatLon, 10000)
+// }
 
 function getWeatherWithLatLon(){
     getImage();
