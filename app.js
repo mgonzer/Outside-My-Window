@@ -12,7 +12,7 @@ var zipCode = null;
 var latitude;
 var longitude;
 
-// $(sendWeatherInfoAuto);
+$(sendWeatherInfoAuto);
 $(clickButton);
 $(clickLocationButton);
 
@@ -35,9 +35,9 @@ function clickLocationButton(){
   $("#locationBtn").click(getWeatherWithLatLon)
 }
 
-// function sendWeatherInfoAuto(){
-//   window.setTimeout(getWeatherWithLatLon, 10000)
-// }
+function sendWeatherInfoAuto(){
+  window.setTimeout(getWeatherWithLatLon, 10000)
+}
 
 function getWeatherWithLatLon(){
     getImage();
@@ -74,58 +74,58 @@ function getTemp(){
 function getImage(){
   if(zipCode==null){
     $.get(PROXY_URL+IMAGES_URL+latitude+","+longitude+".json")
-      .then(showImage)
+      .then(showImage);
   }else{
     $.get(PROXY_URL+IMAGES_URL+zipCode+".json")
-      .then(showImage)
+      .then(showImage);
   }
 }
 
 function getForecast(){
   if(zipCode==null){
     $.get(PROXY_URL+FORECAST_URL+latitude+","+longitude+".json")
-      .then(showForecast)
+      .then(showForecast);
   }else{
     $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
-      .then(showForecast)
+      .then(showForecast);
   }
 }
 
 function getRain(){
   if(zipCode==null){
     $.get(PROXY_URL+FORECAST_URL+latitude+","+longitude+".json")
-      .then(showPrecipitation)
+      .then(showPrecipitation);
   }else{
     $.get(PROXY_URL+FORECAST_URL+zipCode+".json")
-      .then(showPrecipitation)
+      .then(showPrecipitation);
   }
 }
 
 function getAverage(){
   if(zipCode==null){
     $.get(PROXY_URL+ALMANAC_URL+latitude+","+longitude+".json")
-      .then(showAverage)
+      .then(showAverage);
   }else{
     $.get(PROXY_URL+ALMANAC_URL+zipCode+".json")
-      .then(showAverage)
+      .then(showAverage);
   }
 }
 
 function getRadar(){
   if(zipCode==null){
-    $("#radar").attr("src", RADAR_URL+latitude+","+longitude+RADAR_URL2)
+    $("#radar").attr("src", RADAR_URL+latitude+","+longitude+RADAR_URL2);
   }else{
-    $("#radar").attr("src", RADAR_URL+zipCode+RADAR_URL2)
+    $("#radar").attr("src", RADAR_URL+zipCode+RADAR_URL2);
   }
 }
 
 function getAlert(){
   if(zipCode==null){
     $.get(PROXY_URL+ALERT_URL+latitude+","+longitude+".json")
-      .then(showAlert)
+      .then(showAlert);
   }else{
     $.get(PROXY_URL+ALERT_URL+zipCode+".json")
-      .then(showAlert)
+      .then(showAlert);
   }
 }
 
@@ -142,7 +142,7 @@ function showImage(images){
   let image3 = images.webcams[2].CURRENTIMAGEURL;
   $('.img1').attr("src", image1);
   $('.img2').attr("src", image2);
-  $('.img3').attr("src", image3)
+  $('.img3').attr("src", image3);
 }
 
 function showForecast(data){
@@ -152,10 +152,11 @@ function showForecast(data){
 
 function showPrecipitation(data){
   let precipitation = data.forecast.simpleforecast.forecastday[0].qpf_allday.in;
-    if (precipitation > 0){
+  if (precipitation > 0){
     $('#test6').text("YES, Precipitation Today. Approx: " + precipitation+" inches");
-  }if(precipitation==0){
-    $('#test6').text("No rain today")
+  }
+  if (precipitation==0){
+    $('#test6').text("No rain today");
   }
 }
 
@@ -172,7 +173,7 @@ function showAlert(data){
   if(data.alerts[0] == undefined){
     $("#alerts").text("No Weather Alerts In Your Area")
   }else{
-    let alert = data.alerts[0].message
-    $("#alerts").text(alert)
+    let alert = data.alerts[0].message;
+    $("#alerts").text(alert);
   }
 }
