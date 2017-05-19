@@ -36,7 +36,7 @@ function clickLocationButton(){
 }
 
 function sendWeatherInfoAuto(){
-  window.setTimeout(getWeatherWithLatLon, 10000)
+  window.setTimeout(getWeatherWithLatLon, 6000)
 }
 
 function getWeatherWithLatLon(){
