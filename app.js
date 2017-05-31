@@ -7,12 +7,11 @@ const ALMANAC_URL = "http://api.wunderground.com/api/5ee6bff184de1362/almanac/q/
 const RADAR_URL = "http://api.wunderground.com/api/5ee6bff184de1362/animatedradar/q/"
 const RADAR_URL2 = ".gif?newmaps=1&timelabel=1&timelabel.y=10&num=5&delay=50"
 const ALERT_URL = "http://api.wunderground.com/api/5ee6bff184de1362/alerts/q/"
-const JOKES_URL = "http://api.icndb.com/jokes/random/"
 var zipCode = null;
 var latitude;
 var longitude;
 
-$(sendWeatherInfoAuto);
+// $(sendWeatherInfoAuto);
 $(clickButton);
 $(clickLocationButton);
 
@@ -35,9 +34,9 @@ function clickLocationButton(){
   $("#locationBtn").click(getWeatherWithLatLon)
 }
 
-function sendWeatherInfoAuto(){
-  window.setTimeout(getWeatherWithLatLon, 6000)
-}
+// function sendWeatherInfoAuto(){
+//   window.setTimeout(getWeatherWithLatLon, 6000)
+// }
 
 function getWeatherWithLatLon(){
     getImage();
